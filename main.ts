@@ -21,6 +21,23 @@ interface info {
 
 const $row = document.querySelector('.row') as HTMLElement;
 
+function renderCharacter(charData: Data): HTMLElement {
+  const $div = document.createElement('div');
+  $div.classList.add('column-fifth');
+
+  const $img = document.createElement('img');
+  $img.src = charData.imageUrl;
+  $img.alt = charData.name;
+
+  // description of character
+  const $p = document.createElement('p');
+  $p.textContent = charData.name;
+
+  $div.appendChild($img);
+  $div.appendChild($p);
+  return $div;
+}
+
 async function disneyData(): Promise<void> {
   try {
     const response = await fetch('https://api.disneyapi.dev/character');
@@ -29,26 +46,12 @@ async function disneyData(): Promise<void> {
     }
     // data got return
     const data: info = await response.json();
-    console.log('data', data);
 
     // looping over the character
     data.data.forEach((charData) => {
-      const $div = document.createElement('div');
-      $div.classList.add('column-fifth');
-
-      const $img = document.createElement('img');
-      $img.src = charData.imageUrl;
-      $img.alt = charData.name;
-
-      // description of character
-      const $p = document.createElement('p');
-      $p.textContent = charData.name;
-
-      $div.appendChild($img);
-      $div.appendChild($p);
-
       if ($row) {
-        $row.appendChild($div);
+        const $charCard = renderCharacter(charData);
+        $row.appendChild($charCard);
       }
     });
   } catch (error) {
@@ -74,12 +77,13 @@ if ($searchInput) {
 
       // Show or hide based on search query
       if (charName.includes(searchQuery)) {
-        (card as HTMLElement).style.display = 'block'; // Show matching cards
+        card.classList.remove('hidden'); // Show matching cards
       } else {
-        (card as HTMLElement).style.display = 'none'; // Hide non-matching cards
+        card.classList.add('hidden'); // Hide non-matching cards
       }
     });
   });
 }
-
-disneyData();
+document.addEventListener('DOMContentLoaded', () => {
+  disneyData();
+});
