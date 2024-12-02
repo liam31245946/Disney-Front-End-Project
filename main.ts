@@ -23,7 +23,7 @@ const $row = document.querySelector('.row') as HTMLElement;
 
 function renderCharacter(charData: Data): HTMLElement {
   const $div = document.createElement('div');
-  $div.classList.add('column-fifth');
+  $div.classList.add('column-fourth');
 
   const $img = document.createElement('img');
   $img.src = charData.imageUrl;
@@ -68,7 +68,7 @@ if ($searchInput) {
     const searchQuery = $searchInput.value.toLowerCase();
 
     // Select all character cards
-    const characterCards = document.querySelectorAll('.column-fifth');
+    const characterCards = document.querySelectorAll('.column-fourth');
 
     characterCards.forEach((card) => {
       // Get the name of the character in the current card

@@ -71,11 +71,11 @@ img {
   background-color: white;
 }
 
-.column-fifth img {
+.column-fourth img {
   transition: transform 0.3s ease;
 }
 
-.column-fifth img:hover {
+.column-fourth img:hover {
   transform: scale(1.2);
 }
 
@@ -123,7 +123,7 @@ img {
     margin-bottom: 20px;
   }
 
-  .column-fifth {
+  .column-fourth {
     flex-basis: calc(100% / 2);
     margin: 10px;
   }
@@ -142,13 +142,13 @@ img {
   }
 
   /* Images */
-  .column-fifth img {
+  .column-fourth img {
     width: 100%;
     max-width: 150px;
     transition: transform 0.3s ease;
   }
 
-  .column-fifth img:hover {
+  .column-fourth img:hover {
     transform: scale(1.1);
   }
 }
