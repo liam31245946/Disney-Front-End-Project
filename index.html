@@ -1,20 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Project</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <nav>
+        <header>
+          <h1>Walt Disney</h1>
+        </header>
+      </nav>
+    </div>
+
+    <main>
+      <!-- Main Page View -->
+      <div class="view" data-view="main-page">
+        <div class="container">
+          <div class="row">
+            <div class="column-third">
+              <input
+                type="text"
+                class="search-character"
+                placeholder="Search" />
+            </div>
+            <div class="column-third">
+              <h2>Pick a Character</h2>
+            </div>
+            <div class="column-third">
+              <button class="dislikeButton">Dislike</button>
+              <button class="favoriteButton">Favorite</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="characterData">
+          <div class="container">
+            <div class="row">
+              <div class="column-fifth">
+                <img id="disneyPic" src="" alt="Disney Character" />
+                <p id="disneyDescription"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dislike Page View -->
+      <div class="view hidden" data-view="dislike-page">
+        <div class="characterData">
+          <div class="container">
+            <div class="row">
+              <div class="column-fifth">
+                <img id="dislikeneyPic" src="" alt="Disliked Character" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Favorite Page View -->
+      <div class="view hidden" data-view="favorite-page">
+        <div class="characterData">
+          <div class="container">
+            <div class="row">
+              <div class="column-fifth">
+                <img id="favoritePic" src="" alt="Favorite Character" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
