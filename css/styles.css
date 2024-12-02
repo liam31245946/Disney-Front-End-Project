@@ -1,0 +1,154 @@
+.navbar {
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1500754088824-ce0582cfe45f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fDE5MjB4MTA4MCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D');
+  height: 400px;
+}
+
+h1 {
+  color: white;
+  padding-top: 150px;
+  font-size: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 300px;
+}
+
+.column-third {
+  flex-basis: calc(100% / 3);
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+  color: white;
+}
+
+.column-fifth {
+  flex-basis: calc(100% / 5);
+  margin: 30px;
+  text-align: center;
+}
+
+.search-character {
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+button {
+  margin: 20px;
+  height: 30px;
+  width: 80px;
+  border-radius: 8px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+main {
+  background-color: black;
+}
+
+p {
+  color: white;
+}
+
+img {
+  border: 2px;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+}
+
+.column-fourth img {
+  transition: transform 0.3s ease;
+}
+
+.column-fourth img:hover {
+  transform: scale(1.2);
+}
+
+.column-third .dislikeButton {
+  transition: transform 0.3s ease;
+}
+
+.column-third .dislikeButton:hover {
+  transform: scale(1.2);
+}
+
+.column-third .favoriteButton {
+  transition: transform 0.3s ease;
+}
+
+.column-third .favoriteButton:hover {
+  transform: scale(1.2);
+}
+
+@media (width <= 768px) {
+  /* Navbar adjustments for mobile */
+  .navbar {
+    height: 200px;
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 30px;
+    padding-top: 50px;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  /* Stack the row layout vertically */
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Full-width columns */
+  .column-third {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+
+  .column-fourth {
+    flex-basis: calc(100% / 2);
+    margin: 10px;
+  }
+
+  /* Search bar adjustments */
+  .search-character {
+    width: 90%;
+    font-size: 16px;
+  }
+
+  /* Button adjustments */
+  button {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  /* Images */
+  .column-fourth img {
+    width: 100%;
+    max-width: 150px;
+    transition: transform 0.3s ease;
+  }
+
+  .column-fourth img:hover {
+    transform: scale(1.1);
+  }
+}
