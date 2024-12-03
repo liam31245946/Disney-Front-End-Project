@@ -8,6 +8,7 @@ h1 {
   color: white;
   padding-top: 150px;
   font-size: 60px;
+  margin: 0;
 }
 
 .container {
@@ -31,7 +32,7 @@ h2 {
   color: white;
 }
 
-.column-fifth {
+.column-fourth {
   flex-basis: calc(100% / 5);
   margin: 30px;
   text-align: center;
@@ -81,6 +82,7 @@ img {
 
 .column-third .dislikeButton {
   transition: transform 0.3s ease;
+  background-color: rgb(253, 22, 22);
 }
 
 .column-third .dislikeButton:hover {
@@ -89,9 +91,36 @@ img {
 
 .column-third .favoriteButton {
   transition: transform 0.3s ease;
+  background: rgb(13, 163, 13);
 }
 
 .column-third .favoriteButton:hover {
+  transform: scale(1.2);
+}
+
+.column-half {
+  flex-basis: calc(100% / 2);
+}
+
+.addFavorite {
+  height: 30px;
+  width: 150px;
+  background: rgb(13, 163, 13);
+  transition: transform 0.3s ease;
+}
+
+.addDislike {
+  height: 30px;
+  width: 150px;
+  background-color: rgb(253, 22, 22);
+  transition: transform 0.3s ease;
+}
+
+.addFavorite:hover {
+  transform: scale(1.2);
+}
+
+.addDislike:hover {
   transform: scale(1.2);
 }
 
