@@ -54,7 +54,6 @@ async function disneyData(): Promise<void> {
     }
     // data got return
     const data: info = await response.json();
-    console.log(data);
 
     // looping over the character
     data.data.forEach((charData) => {
@@ -98,7 +97,20 @@ if ($searchInput) {
 
 // function use to show information of individual card.
 
+const $mainPage = document.querySelector(
+  '[data-view="main-page"]',
+) as HTMLElement;
+const $characterDetail = document.querySelector(
+  '[data-view="character-page"]',
+) as HTMLElement;
+
 function showCharacterDetail(charData: Data): void {
+  const $characterName = document.querySelector(
+    '.characterName',
+  ) as HTMLElement;
+  const $characterTVshow = document.querySelector(
+    '.characterTVshow',
+  ) as HTMLElement;
   const $characterPic = document.querySelector(
     '#character-image',
   ) as HTMLImageElement;
@@ -114,17 +126,22 @@ function showCharacterDetail(charData: Data): void {
 
   $characterPic.src = charData.imageUrl;
   $characterPic.alt = charData.name;
-  $characterFilm.textContent = charData.films.join(' , ');
-  $characterVideogames.textContent = charData.videoGames.join(' ');
-  $characterInfo.innerHTML = `<a href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
+  $characterName.textContent = `Character Name: ${charData.name}`;
+
+  if ($characterTVshow) {
+    $characterTVshow.textContent = charData.tvShows.length
+      ? `TV Show : ${charData.tvShows.join(' , ')}`
+      : `TV Show: N/A, does not exist`;
+  }
+
+  $characterFilm.textContent = `Film: ${charData.films.join(' , ')}`;
+
+  $characterVideogames.textContent = charData.videoGames.length
+    ? `Video Game: ${charData.videoGames.join(' ')}`
+    : `Video Game: N/A, does not exist`;
+  $characterInfo.innerHTML = `Character's Information on Wikipedia <a href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
 
   // main page swapping
-  const $mainPage = document.querySelector(
-    '[data-view="main-page"]',
-  ) as HTMLElement;
-  const $characterDetail = document.querySelector(
-    '[data-view="character-page"]',
-  ) as HTMLElement;
 
   $mainPage.classList.add('hidden');
   $characterDetail.classList.remove('hidden');
@@ -156,73 +173,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // first part will be code in Character-Page
 
-// set how data going into  and out of local storage
-function saveToLocalStorage(key: string, data: Data[]): void {
-  localStorage.setItem(key, JSON.stringify(data));
+// Local storage function will be in data.ts
+
+// function to display character's data, this is the annoying part to fix and will not try to do it again
+
+async function characterDataById(id: number): Promise<Data | null> {
+  try {
+    const response = await fetch(`https://api.disneyapi.dev/character/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching character data:', error);
+    return null;
+  }
 }
 
-function getFromLocalStorage(key: string): Data[] {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : [];
+async function handleAddToList(
+  key: string,
+  characterId: number,
+): Promise<void> {
+  try {
+    const charData = await characterDataById(characterId);
+    if (charData) {
+      const list = getFromLocalStorage(key);
+      list.push(charData);
+      saveToLocalStorage(key, list);
+    }
+  } catch (error) {
+    console.error('Error adding to list:', error);
+  }
 }
-
-// function to display character's data
-
-function getCharData(): Data {
-  const $characterPic = document.querySelector(
-    '#character-image',
-  ) as HTMLImageElement;
-  const $characterFilm = document.querySelector(
-    '.characterFilm',
-  ) as HTMLElement;
-  const $characterVideogames = document.querySelector(
-    '.characterVideogames',
-  ) as HTMLElement;
-  const $characterInfo = document.querySelector(
-    '.characterInfo',
-  ) as HTMLElement;
-
-  return {
-    _id: Date.now(), // Temporary unique ID for demonstration
-    name: $characterPic.alt,
-    imageUrl: $characterPic.src,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    films: $characterFilm.textContent
-      ? $characterFilm.textContent.split(', ')
-      : [],
-    shortFilms: [],
-    tvShows: [],
-    videoGames: $characterVideogames.textContent
-      ? $characterVideogames.textContent.split(' ')
-      : [],
-    allies: [],
-    enemies: [],
-    parkAttractions: [],
-    sourceUrl: $characterInfo.querySelector('a')?.href || '',
-    url: '',
-  };
-}
-
-// eventlistern to listen for dislike and favorite button being click in character-page
 
 const $addDislike = document.querySelector('.addDislike');
 const $addFavorite = document.querySelector('.addFavorite');
 
+// Event listeners, this click will then move data to local storage
 if ($addDislike) {
   $addDislike.addEventListener('click', () => {
-    const charData = getCharData();
-    const dislikeList = getFromLocalStorage('dislikeList');
-    dislikeList.push(charData);
-    saveToLocalStorage('dislikeList', dislikeList);
+    const characterId = Number($addDislike.getAttribute('data-id')); // Set ID during rendering
+    handleAddToList('dislikeList', characterId);
   });
 }
 
 if ($addFavorite) {
   $addFavorite.addEventListener('click', () => {
-    const charData = getCharData();
-    const favoriteList = getFromLocalStorage('favoriteList');
-    favoriteList.push(charData);
-    saveToLocalStorage('favoriteList', favoriteList);
+    const characterId = Number($addFavorite.getAttribute('data-id')); // Set ID during rendering
+    handleAddToList('favoriteList', characterId);
   });
 }

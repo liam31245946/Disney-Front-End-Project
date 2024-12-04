@@ -1,131 +1,169 @@
+/* Navbar Styling */
 .navbar {
   text-align: center;
-  background-image: url('https://images.unsplash.com/photo-1500754088824-ce0582cfe45f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fDE5MjB4MTA4MCUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D');
-  height: 400px;
+  background: linear-gradient(45deg, #4b79a1, #283e51);
+  height: 1439px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/colton-jones-u58-NAyaa9c-unsplash.jpg');
+  width: 1910px;
 }
 
 h1 {
-  color: white;
-  padding-top: 150px;
+  font-family: Poppins, sans-serif;
   font-size: 60px;
-  margin: 0;
+  font-weight: bold;
+  color: whitesmoke;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px black;
+  padding-top: 150px;
 }
 
+/* Main Container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Rows and Columns */
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .column-third {
-  flex-basis: calc(100% / 3);
   text-align: center;
-}
-
-h2 {
-  font-size: 30px;
-  color: white;
 }
 
 .column-fourth {
-  flex-basis: calc(100% / 5);
-  margin: 30px;
+  background: linear-gradient(90deg, #b79891, #94716b);
+  border-radius: 15px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  padding: 15px;
   text-align: center;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
+.column-fourth:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Headings */
+h2 {
+  font-size: 30px;
+  color: white;
+  font-family: Roboto, sans-serif;
+}
+
+/* Search Bar */
 .search-character {
-  width: 200px;
-  height: 30px;
+  width: 100%;
+  max-width: 300px;
+  height: 40px;
   padding: 10px;
   border-radius: 8px;
-  margin: 20px;
+  border: none;
+  margin-right: 10px;
+  margin-top: 30px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+/* Buttons */
 button {
   margin: 20px;
-  height: 30px;
-  width: 80px;
+  height: 40px;
+  width: 100px;
   border-radius: 8px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-main {
-  background-color: black;
-}
-
-p {
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   color: white;
+  font-family: Roboto, sans-serif;
 }
 
-img {
-  border: 2px;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: white;
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
-.column-fourth img {
-  transition: transform 0.3s ease;
+.dislikeButton {
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
 }
 
-.column-fourth img:hover {
-  transform: scale(1.2);
-}
-
-.column-third .dislikeButton {
-  transition: transform 0.3s ease;
-  background-color: rgb(253, 22, 22);
-}
-
-.column-third .dislikeButton:hover {
-  transform: scale(1.2);
-}
-
-.column-third .favoriteButton {
-  transition: transform 0.3s ease;
-  background: rgb(13, 163, 13);
-}
-
-.column-third .favoriteButton:hover {
-  transform: scale(1.2);
-}
-
-.column-half {
-  flex-basis: calc(100% / 2);
-}
-
-.addFavorite {
-  height: 30px;
-  width: 150px;
-  background: rgb(13, 163, 13);
-  transition: transform 0.3s ease;
+.favoriteButton {
+  background: linear-gradient(90deg, #42e695, #3bb2b8);
 }
 
 .addDislike {
-  height: 30px;
-  width: 150px;
-  background-color: rgb(253, 22, 22);
-  transition: transform 0.3s ease;
+  background: #ff5f6d;
 }
 
+.addFavorite {
+  background: #42e695;
+}
+
+.addDislike:hover,
 .addFavorite:hover {
   transform: scale(1.2);
 }
 
-.addDislike:hover {
-  transform: scale(1.2);
+/* Image Styling */
+img {
+  width: 70%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
+img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Text and Descriptions */
+p {
+  color: white;
+  font-family: Roboto, sans-serif;
+}
+
+.characterInfo a {
+  color: #42e695;
+  text-decoration: none;
+}
+
+.characterInfo a:hover {
+  text-decoration: underline;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none !important;
+}
+
+/* Main Background */
+main {
+  background: rgb(34, 33, 33);
+  padding: 20px 0;
+}
+
+/* Responsive Design */
 @media (width <= 768px) {
-  /* Navbar adjustments for mobile */
   .navbar {
     height: 200px;
     background-size: cover;
@@ -133,51 +171,28 @@ img {
 
   h1 {
     font-size: 30px;
-    padding-top: 50px;
   }
 
-  .container {
-    padding: 0 10px;
-  }
-
-  /* Stack the row layout vertically */
   .row {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  /* Full-width columns */
-  .column-third {
-    flex-basis: 100%;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 
   .column-fourth {
-    flex-basis: calc(100% / 2);
-    margin: 10px;
+    padding: 10px;
   }
 
-  /* Search bar adjustments */
   .search-character {
     width: 90%;
     font-size: 16px;
   }
 
-  /* Button adjustments */
   button {
-    width: 100px;
+    width: 120px;
     height: 40px;
     font-size: 14px;
   }
 
-  /* Images */
-  .column-fourth img {
-    width: 100%;
+  img {
     max-width: 150px;
-    transition: transform 0.3s ease;
-  }
-
-  .column-fourth img:hover {
-    transform: scale(1.1);
   }
 }
