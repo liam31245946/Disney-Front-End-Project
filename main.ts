@@ -114,7 +114,7 @@ function showCharacterDetail(charData: Data): void {
   $characterVideogames.textContent = charData.videoGames.length
     ? `Video Game: ${charData.videoGames.join(' ')}`
     : `Video Game: N/A, does not exist`;
-  $characterInfo.innerHTML = `Character's Information on Wikipedia <a href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
+  $characterInfo.innerHTML = `Character's Information on Wikipedia <a target="_blank" href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
 
   // Set data-id on Favorite and Dislike buttons
   if ($addDislike) {
@@ -265,25 +265,6 @@ function handleAddToList(key: string, characterId: number): void {
       }
     });
   }
-}
-
-// this make sure the data-id being passed down correct (now as string)
-if ($addDislike) {
-  $addDislike.addEventListener('click', () => {
-    const characterId = Number($addDislike.getAttribute('data-id')); // Get the character's ID
-    if (characterId) {
-      handleAddToList('dislikeList', characterId);
-    }
-  });
-}
-
-if ($addFavorite) {
-  $addFavorite.addEventListener('click', () => {
-    const characterId = Number($addFavorite.getAttribute('data-id')); // Get the character's ID
-    if (characterId) {
-      handleAddToList('favoriteList', characterId);
-    }
-  });
 }
 
 // Event listeners, this click will then move data to local storage
