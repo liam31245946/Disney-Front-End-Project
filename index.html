@@ -41,8 +41,9 @@
             </div>
 
             <div class="column-third">
-              <button class="dislikeButton">Dislike</button>
-              <button class="favoriteButton">Favorite</button>
+              <button class="viewDislikeButton">View Dislike List</button>
+
+              <button class="viewFavoriteButton">View Favorite List</button>
             </div>
           </div>
         </div>
@@ -111,7 +112,14 @@
         </div>
       </div>
     </main>
-
+    <dialog class="dislike">
+      <h3>Character had been added to to your dislike list!</h3>
+      <button class="dismiss">Close</button>
+    </dialog>
+    <dialog class="favorite">
+      <h3>Character had been added to to your favorite list!</h3>
+      <button class="dismiss1">Close</button>
+    </dialog>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>

@@ -83,7 +83,7 @@ h2 {
 button {
   margin: 20px;
   height: 40px;
-  width: 100px;
+  width: 120px;
   border-radius: 8px;
   border: none;
   font-size: 16px;
@@ -100,25 +100,122 @@ button:hover {
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
 }
 
-.dislikeButton {
+.viewDislikeButton {
   background: linear-gradient(90deg, #ff5f6d, #ffc371);
 }
 
-.favoriteButton {
+.viewFavoriteButton {
   background: linear-gradient(90deg, #42e695, #3bb2b8);
 }
 
 .addDislike {
-  background: #ff5f6d;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
 }
 
 .addFavorite {
-  background: #42e695;
+  background: linear-gradient(90deg, #42e695, #3bb2b8);
 }
 
 .addDislike:hover,
 .addFavorite:hover {
   transform: scale(1.2);
+}
+
+/* Dialog design */
+
+/* General dialog styles */
+dialog {
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+  background: linear-gradient(145deg, #fff, #f3f3f3);
+  animation: fadeIn 0.3s ease-in-out;
+  font-family: Arial, sans-serif;
+}
+
+/* Dislike dialog specific styling */
+dialog.dislike {
+  border-top: 6px solid #ff6f61;
+  color: #ff3b2e;
+}
+
+/* Favorite dialog specific styling */
+dialog.favorite {
+  border-top: 6px solid #4caf50;
+  color: #388e3c;
+}
+
+/* Headings inside dialogs */
+dialog h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Close button styles */
+button.dismiss,
+.dismiss1 {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.remove-button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: darkred;
+}
+
+/* Dismiss button for dislike dialog */
+dialog.dislike button.dismiss {
+  background-color: #ff6f61;
+}
+
+dialog.favorite button.dismiss1 {
+  background-color: #4caf50;
+}
+
+dialog.dislike button.dismiss:hover {
+  background-color: #ff3b2e;
+}
+
+dialog.favorite button.dismiss1:hover {
+  background-color: #388e3c;
+}
+
+/* Backdrop styling */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Image Styling */
