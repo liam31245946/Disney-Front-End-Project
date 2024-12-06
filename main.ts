@@ -114,7 +114,7 @@ function showCharacterDetail(charData: Data): void {
   $characterVideogames.textContent = charData.videoGames.length
     ? `Video Game: ${charData.videoGames.join(' ')}`
     : `Video Game: N/A, does not exist`;
-  $characterInfo.innerHTML = `Character's Information on Wikipedia <a href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
+  $characterInfo.innerHTML = `Character's Information on Wikipedia <a target="_blank" href="${charData.sourceUrl}">${charData.sourceUrl}</a>`;
 
   // Set data-id on Favorite and Dislike buttons
   if ($addDislike) {
