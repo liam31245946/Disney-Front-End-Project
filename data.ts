@@ -1,8 +1,11 @@
 function saveToLocalStorage(key: string, data: Data[]): void {
-  localStorage.setItem(key, JSON.stringify(data));
+  if (Array.isArray(data) && data.every((item) => item._id && item.name)) {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
 }
 
 function getFromLocalStorage(key: string): Data[] {
   const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : [];
+  const parsedData = data ? JSON.parse(data) : [];
+  return parsedData;
 }
