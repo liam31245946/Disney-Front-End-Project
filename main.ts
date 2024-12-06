@@ -232,7 +232,9 @@ $dismiss?.addEventListener('click', () => {
   $dialogDislike.close();
 });
 
-// function to save the character to local storage !!!!!!
+// function to save the character to local storage !!!!!!\
+
+// You are looking at a feature, not a bug. Don't touch it if it works **************
 
 function handleAddToList(key: string, characterId: number): void {
   // Get the current list (favorite or dislike)
